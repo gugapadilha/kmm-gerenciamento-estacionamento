@@ -167,8 +167,8 @@ O APK estará em: `app/build/outputs/apk/release/app-release.apk`
 
 ## Conta de Teste
 
-**Email**: [Informe o email da conta criada]  
-**Senha**: [Informe a senha da conta criada]
+**Email**: [guga.santospadilha@gmail.com]  
+**Senha**: [av03dguug]
 
 ## Diagrama UML do Banco de Dados
 
