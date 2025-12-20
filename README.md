@@ -176,12 +176,12 @@ Consulte o arquivo `DATABASE_UML.md` para visualizar o diagrama completo do banc
 
 ## FOTOS DO PROJETO ANDROID
 
-<img width="500" height="1000" alt="Screenshot_20251220_002039" src="https://github.com/user-attachments/assets/e20fd059-150b-4d2b-9649-7b79e82c0ecc" />
-<img width="500" height="1000" alt="Screenshot_20251220_192254" src="https://github.com/user-attachments/assets/18531f2c-212e-4cd9-8073-4b1a701139f5" />
-<img width="500" height="1000" alt="Screenshot_20251220_192241" src="https://github.com/user-attachments/assets/65eb322d-b871-490d-9d6a-90e5df0be966" />
-<img width="500" height="1000" alt="Screenshot_20251220_192232" src="https://github.com/user-attachments/assets/acc2d534-13f0-472b-957a-981940f0acfa" />
-<img width="500" height="1000" alt="Screenshot_20251220_202706" src="https://github.com/user-attachments/assets/212b5dfb-da13-42f5-9df4-2b6be1f8281f" />
-<img width="500" height="1000" alt="Screenshot_20251220_202908" src="https://github.com/user-attachments/assets/dfba2a20-dbdc-4948-ad45-70c12f1c6435" />
+<img width="300" height="700" alt="Screenshot_20251220_002039" src="https://github.com/user-attachments/assets/e20fd059-150b-4d2b-9649-7b79e82c0ecc" />
+<img width="300" height="700" alt="Screenshot_20251220_192254" src="https://github.com/user-attachments/assets/18531f2c-212e-4cd9-8073-4b1a701139f5" />
+<img width="300" height="700" alt="Screenshot_20251220_192241" src="https://github.com/user-attachments/assets/65eb322d-b871-490d-9d6a-90e5df0be966" />
+<img width="300" height="700" alt="Screenshot_20251220_192232" src="https://github.com/user-attachments/assets/acc2d534-13f0-472b-957a-981940f0acfa" />
+<img width="300" height="700" alt="Screenshot_20251220_202706" src="https://github.com/user-attachments/assets/212b5dfb-da13-42f5-9df4-2b6be1f8281f" />
+<img width="300" height="700" alt="Screenshot_20251220_202908" src="https://github.com/user-attachments/assets/dfba2a20-dbdc-4948-ad45-70c12f1c6435" />
 
 <img width="500" height="1000" alt="Screenshot_20251220_002051" src="https://github.com/user-attachments/assets/609727d8-c4bd-4fb5-8d4c-db8809d9cfa5" />
 <img width="608" height="632" alt="Screenshot_1" src="https://github.com/user-attachments/assets/a8d927a7-e6f9-414c-8b2b-2dbfdd61e28b" />
