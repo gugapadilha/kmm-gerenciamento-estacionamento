@@ -5,13 +5,16 @@ Aplicativo Android de gestão de estacionamento desenvolvido em Kotlin usando Cl
 ## Tecnologias Utilizadas
 
 - **Kotlin** - Linguagem de programação
+- **Kotlin Multiplatform (KMP)** - Compartilhamento de código entre Android e Web
 - **Jetpack Compose** - Framework de UI
-- **Room Database** - Banco de dados local
+- **Room Database** - Banco de dados local (Android)
 - **Ktor** - Cliente HTTP para requisições à API
 - **Koin** - Injeção de dependências
 - **Coroutines & Flow** - Programação assíncrona
 - **Navigation Compose** - Navegação entre telas
 - **Material Design 3** - Design system
+- **MockK** - Framework de mocking para testes
+- **Turbine** - Biblioteca para testar Flows
 
 ## Arquitetura
 
@@ -136,6 +139,131 @@ O aplicativo utiliza as cores da identidade visual da Jump Park:
 - **Verde**: `#4CAF50` (Primary)
 - **Azul Escuro**: `#1A237E` (Secondary)
 - **Branco**: `#FFFFFF` (Background)
+
+## Testes Unitários
+
+O projeto possui uma suíte de testes unitários cobrindo os principais componentes da aplicação. Atualmente, **27 testes estão passando** com sucesso.
+
+### Testes Implementados e Funcionais
+
+1. **CalculateParkingFeeUseCaseTest** (8 testes) - Testa a lógica de cálculo de tarifas de estacionamento:
+   - Cálculo com tolerância inicial
+   - Aplicação de regras "até" e "a partir de"
+   - Cálculo de períodos adicionais
+   - Aplicação de valor máximo
+   - Arredondamento de períodos parciais
+
+2. **LoginViewModelTest** (8 testes) - Testa a lógica de autenticação:
+   - Inicialização com estado vazio
+   - Atualização de email e senha
+   - Validação de campos obrigatórios (email e senha vazios)
+   - Fluxo de login bem-sucedido
+   - Tratamento de erros de autenticação
+   - Limpeza de erros
+   - Remoção de espaços em branco do email
+
+3. **VehicleEntryViewModelTest** (7 testes) - Testa a lógica de entrada de veículos:
+   - Inicialização com estado vazio
+   - Atualização de placa e conversão para maiúsculas
+   - Atualização de modelo e cor
+   - Seleção de tabela de preços
+   - Carregamento de tabelas de preços do repositório
+   - Remoção de espaços em branco dos campos ao registrar
+
+4. **VehicleDetailViewModelTest** (11 testes) - Testa a lógica de detalhes e saída de veículos:
+   - Inicialização com estado vazio
+   - Carregamento de veículo e cálculo de valor
+   - Exibição de erro quando veículo não é encontrado
+   - Recalculo de valor
+   - Seleção de método de pagamento
+   - Validação de método de pagamento na saída
+   - Processamento de saída com sucesso
+   - Formatação de data e hora
+   - Limpeza de erros
+   - Reset de estado de sucesso
+   - Permissão de saída com valor zero (dentro da tolerância)
+
+### Executando os Testes
+
+Para executar todos os testes unitários no Android Studio:
+1. Clique com o botão direito na pasta `app/src/test`
+2. Selecione "Run 'Tests in 'test''"
+
+Ou via linha de comando:
+```bash
+./gradlew test
+```
+
+Para executar um teste específico:
+```bash
+./gradlew test --tests "com.example.gestodeestacionamento.domain.usecase.CalculateParkingFeeUseCaseTest"
+```
+
+### Dependências de Teste
+
+- **JUnit 4** - Framework de testes
+- **MockK** - Mocking framework para Kotlin
+- **Turbine** - Teste de Flows
+- **kotlinx-coroutines-test** - Teste de coroutines
+- **androidx.arch.core:core-testing** - Teste de ViewModels
+
+## Kotlin Multiplatform (KMP)
+
+O projeto está configurado para suportar Kotlin Multiplatform, permitindo compartilhar código entre Android e Web.
+
+### Estrutura KMP
+
+```
+app/src/
+├── commonMain/          # Código compartilhado entre plataformas
+│   └── kotlin/.../platform/  # Abstrações expect/actual
+├── androidMain/         # Implementações específicas do Android
+│   └── kotlin/.../platform/  # Implementações Android
+└── jsMain/             # Implementações específicas da Web
+    └── kotlin/.../platform/  # Implementações Web
+```
+
+### Abstrações Expect/Actual Implementadas
+
+1. **PlatformStorage** - Armazenamento local:
+   - Android: DataStore
+   - Web: LocalStorage
+
+2. **DatabaseFactory** - Factory de banco de dados:
+   - Android: Room Database
+   - Web: LocalStorage (simplificado)
+
+3. **Navigation** - Navegação:
+   - Android: Navigation Compose
+   - Web: Navigation Compose
+
+4. **ViewModel** - ViewModels:
+   - Android: Koin ViewModel
+   - Web: Koin ViewModel
+
+### Executando no Android
+
+```bash
+./gradlew :app:assembleDebug
+```
+
+### Executando na Web
+
+```bash
+# Build para desenvolvimento
+./gradlew :app:jsBrowserDevelopmentWebpack
+
+# Build para produção
+./gradlew :app:jsBrowserProductionWebpack
+```
+
+Os arquivos gerados estarão em:
+- Desenvolvimento: `app/build/dist/js/developmentExecutable/`
+- Produção: `app/build/dist/js/productionExecutable/`
+
+Para mais detalhes sobre a migração KMP, consulte:
+- `KMP_MIGRATION_GUIDE.md` - Guia de migração
+- `README_KMP.md` - Documentação completa do KMP
 
 ## Geração de APK
 

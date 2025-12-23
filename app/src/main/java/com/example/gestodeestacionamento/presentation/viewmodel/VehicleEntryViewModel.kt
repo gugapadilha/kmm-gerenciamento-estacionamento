@@ -40,15 +40,6 @@ class VehicleEntryViewModel(
     private val _isEntrySuccessful = MutableStateFlow(false)
 
     private val priceTablesFlow = priceTableRepository.getAllPriceTables()
-        .onStart { 
-            android.util.Log.d("VehicleEntryViewModel", "Starting to collect price tables from repository")
-        }
-        .onEach { tables ->
-            android.util.Log.d("VehicleEntryViewModel", "Price tables flow emitted: ${tables.size} tables")
-            tables.forEach { table ->
-                android.util.Log.d("VehicleEntryViewModel", "PriceTable: id=${table.id}, name=${table.name}")
-            }
-        }
 
     private val formDataFlow = combine(_plate, _model, _color, _selectedPriceTableId) { plate, model, color, selectedPriceTableId ->
         FormData(plate, model, color, selectedPriceTableId)
@@ -68,7 +59,6 @@ class VehicleEntryViewModel(
         _errorMessage,
         _isEntrySuccessful
     ) { formData, tables, isLoading, errorMessage, isEntrySuccessful ->
-        android.util.Log.d("VehicleEntryViewModel", "Combining state: priceTables=${tables.size}")
         VehicleEntryUiState(
             plate = formData.plate,
             model = formData.model,
@@ -84,14 +74,6 @@ class VehicleEntryViewModel(
         started = kotlinx.coroutines.flow.SharingStarted.WhileSubscribed(5000),
         initialValue = VehicleEntryUiState()
     )
-
-    init {
-        viewModelScope.launch {
-            priceTablesFlow.collect { tables ->
-                android.util.Log.d("VehicleEntryViewModel", "Loaded price tables: ${tables.size}")
-            }
-        }
-    }
 
     fun updatePlate(plate: String) {
         _plate.value = plate.uppercase()
@@ -164,7 +146,6 @@ class VehicleEntryViewModel(
                 
                 onSuccess()
             } catch (e: Exception) {
-                android.util.Log.e("VehicleEntryViewModel", "Error registering vehicle", e)
                 _isLoading.value = false
                 _errorMessage.value = "Erro ao cadastrar veículo: ${e.message}"
             }

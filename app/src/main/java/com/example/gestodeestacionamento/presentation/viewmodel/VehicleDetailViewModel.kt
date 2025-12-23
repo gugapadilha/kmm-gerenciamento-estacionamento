@@ -50,25 +50,8 @@ class VehicleDetailViewModel(
                 return@launch
             }
 
-            android.util.Log.d("VehicleDetailViewModel", "Loading vehicle: id=$vehicleId, priceTableId=${vehicle.priceTableId}")
-
-            // Listar todas as tabelas para debug (apenas uma vez)
-            val allTables = priceTableRepository.getAllPriceTables().first()
-            android.util.Log.d("VehicleDetailViewModel", "Available price tables: ${allTables.size}")
-            allTables.forEach { table ->
-                android.util.Log.d("VehicleDetailViewModel", "Available table: id=${table.id}, name=${table.name}")
-            }
-
             // Buscar tabela de preços
             val priceTable = priceTableRepository.getPriceTableById(vehicle.priceTableId)
-            
-            android.util.Log.d("VehicleDetailViewModel", "Vehicle priceTableId: ${vehicle.priceTableId}, found table: ${priceTable != null}")
-            if (priceTable != null) {
-                android.util.Log.d("VehicleDetailViewModel", "Price table: id=${priceTable.id}, name=${priceTable.name}")
-                android.util.Log.d("VehicleDetailViewModel", "Price table config: tolerance=${priceTable.initialTolerance}, untilTime=${priceTable.untilTime}, untilValue=${priceTable.untilValue}, fromTime=${priceTable.fromTime}, everyInterval=${priceTable.everyInterval}, addValue=${priceTable.addValue}")
-            } else {
-                android.util.Log.w("VehicleDetailViewModel", "Price table not found for id: ${vehicle.priceTableId}")
-            }
 
             // Combinar métodos de pagamento com recálculo periódico do valor
             paymentRepository.getAllPaymentMethods().collect { methods ->
@@ -81,11 +64,8 @@ class VehicleDetailViewModel(
                         currentExitTime
                     )
                 } else {
-                    android.util.Log.w("VehicleDetailViewModel", "Price table not found, returning 0.0")
                     0.0
                 }
-                
-                android.util.Log.d("VehicleDetailViewModel", "Calculated amount: $currentCalculatedAmount")
                 
                 _uiState.value = _uiState.value.copy(
                     vehicle = vehicle,
