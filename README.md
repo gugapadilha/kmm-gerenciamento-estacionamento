@@ -312,4 +312,5 @@ Consulte o arquivo `DATABASE_UML.md` para visualizar o diagrama completo do banc
 <img width="300" height="700" alt="Screenshot_20251220_202908" src="https://github.com/user-attachments/assets/dfba2a20-dbdc-4948-ad45-70c12f1c6435" />
 <img width="300" height="700" alt="Screenshot_20251220_002051" src="https://github.com/user-attachments/assets/609727d8-c4bd-4fb5-8d4c-db8809d9cfa5" />
 <img width="600" height="700" alt="Screenshot_1" src="https://github.com/user-attachments/assets/a8d927a7-e6f9-414c-8b2b-2dbfdd61e28b" />
+<img width="400" height="100" alt="image" src="https://github.com/user-attachments/assets/909bc89a-5df8-45c2-8f34-f4068f9c0646" />
 
