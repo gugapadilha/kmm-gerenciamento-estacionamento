@@ -293,10 +293,6 @@ O APK estará em: `app/build/outputs/apk/release/app-release.apk`
 
 4. **Dados Locais**: Todos os veículos e pagamentos são armazenados localmente. Ao encerrar a sessão, todos os dados são apagados.
 
-## Conta de Teste
-
-**Email**: [guga.santospadilha@gmail.com]  
-**Senha**: [av03dguug]
 
 ## Diagrama UML do Banco de Dados
 
